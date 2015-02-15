@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+class TodoTableViewCell: UITableViewCell {
+    @IBOutlet weak var todoTitle: UILabel!
+    @IBAction func checkButtonAction(sender: AnyObject) {
+    }
+    
+}
