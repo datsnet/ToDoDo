@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
     @IBOutlet var tableView : UITableView!
     @IBOutlet weak var todoAddField: UITextField!
     
@@ -46,7 +46,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 //        self.tableView.registerClass(TodoTableViewCell.classForCoder(), forCellReuseIdentifier: "TodoTableViewCell")
         //カスタムセルを指定
         
-        var nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
+        let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
         tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
         // TODODBから値を取得して表示する
         todoItem = ["aa", "aa"]
@@ -58,10 +58,10 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
-        let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell") as TodoTableViewCell
+        let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell", forIndexPath: indexPath) as TodoTableViewCell
 //        cell.textLabel?.text = todoItem[indexPath.row]
         cell.todoTitle.text = todoItem[indexPath.row];
-
+//        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         return cell
     }
     
