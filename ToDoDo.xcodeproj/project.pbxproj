@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2CC71EF13A7A4F4C052AABF0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D3EE37E93D1E55D92E8026 /* libPods.a */; };
+		6F0ED2A01A91822E005F9001 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */; };
+		6F0ED2A11A91A219005F9001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB621A8D00BF004425A0 /* Images.xcassets */; };
 		F04AFCD71A8F201300EEF845 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AFBF61A8F201300EEF845 /* CAPSPageMenu.swift */; };
 		F04AFCD81A8F201300EEF845 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AFBF61A8F201300EEF845 /* CAPSPageMenu.swift */; };
 		F04AFE5A1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04AFE591A8F24FB00EEF845 /* TodoListViewController.xib */; };
@@ -284,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F04AFE5B1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */,
+				6F0ED2A11A91A219005F9001 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +346,7 @@
 				F04AFE5E1A8F27B100EEF845 /* TodoListViewController.swift in Sources */,
 				F04AFCD81A8F201300EEF845 /* CAPSPageMenu.swift in Sources */,
 				F0D7DB721A8D00BF004425A0 /* ToDoDoTests.swift in Sources */,
+				6F0ED2A01A91822E005F9001 /* TodoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

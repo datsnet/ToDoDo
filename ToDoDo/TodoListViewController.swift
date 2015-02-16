@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDelegate {
+class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView : UITableView!
     @IBOutlet weak var todoAddField: UITextField!
@@ -40,23 +40,32 @@ class TodoListViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+//        self.tableView.registerClass(TodoTableViewCell.classForCoder(), forCellReuseIdentifier: "TodoTableViewCell")
+        //カスタムセルを指定
+        
+        var nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
+        tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
         // TODODBから値を取得して表示する
         todoItem = ["aa", "aa"]
     }
     
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int  {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
         return todoItem.count;
     }
     
-    func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath:NSIndexPath!) -> UITableViewCell! {
-//        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell") as TodoTableViewCell
-        cell.textLabel?.text = todoItem[indexPath.row]
+//        cell.textLabel?.text = todoItem[indexPath.row]
+        cell.todoTitle.text = todoItem[indexPath.row];
+
         return cell
     }
     
-    func tableView(tableView: UITableView?, didSelectRowAtIndexPath indexPath:NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
     }
 
     
