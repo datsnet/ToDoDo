@@ -9,9 +9,13 @@
 import Foundation
 
 class TodoItem: NSObject {
-    var isChecked: Bool?
-    var todoTitle: NSString?
-    internal override init() {
+    var isChecked: Bool! = false
+    var todoTitle: NSString!
+
+    convenience init(isChecked: Bool, todoTitle: NSString) {
+        self.init()
+        self.isChecked = isChecked
+        self.todoTitle = todoTitle
     }
     func getTodoTitle() -> NSString {
         return todoTitle!
