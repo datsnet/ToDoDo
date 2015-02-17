@@ -13,6 +13,18 @@ class TodoTableViewCell: UITableViewCell {
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     @IBAction func checkButtonAction(sender: AnyObject) {
+        NSLog("%@", "押された！！")
+
+        if let checkButton = sender as? UIButton {
+            checkButton.setImage(UIImage(named: "done"), forState: UIControlState.Normal)
+        }
+        let text = NSAttributedString(string: todoTitle.text!, attributes: [
+            NSStrikethroughStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue,
+            // 取り消し線に色つけるなら下記
+            NSStrikethroughColorAttributeName: UIColor.redColor()
+            ])
+        todoTitle.attributedText = text
+        
     }
     
     required init(coder aDecoder: NSCoder) {

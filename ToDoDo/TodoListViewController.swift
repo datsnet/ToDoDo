@@ -14,7 +14,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var tableView : UITableView!
     @IBOutlet weak var todoAddField: UITextField!
     
-    var todoItem = [String]()
+    var todoItem = [TodoItem]()
     
     @IBAction func todoAddAction(sender: AnyObject) {
         var todoText: NSString = todoAddField.text
@@ -29,7 +29,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         // TODO テーブルに表示する
         // テーブルの先頭に新規アイテムを挿入する
         // データソースの更新
-        todoItem.insert(todoText, atIndex: 0)
+        var item = TodoItem()
+        item.setTodoTitle(todoText)
+        todoItem.insert(item, atIndex: 0)
         // テーブルビューの更新
         tableView?.reloadData();
         // テキストフィールドのクリア
@@ -43,13 +45,15 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-//        self.tableView.registerClass(TodoTableViewCell.classForCoder(), forCellReuseIdentifier: "TodoTableViewCell")
         //カスタムセルを指定
-        
         let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
         tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
         // TODODBから値を取得して表示する
-        todoItem = ["aa", "aa"]
+        var item1 = TodoItem()
+        var item2 = TodoItem()
+        item1.setTodoTitle("todo1")
+        item2.setTodoTitle("todo2")
+        todoItem = [item1, item2]
     }
     
     
@@ -59,13 +63,12 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell", forIndexPath: indexPath) as TodoTableViewCell
-//        cell.textLabel?.text = todoItem[indexPath.row]
-        cell.todoTitle.text = todoItem[indexPath.row];
-//        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        cell.todoTitle.text = todoItem[indexPath.row].todoTitle;
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+        
     }
 
     
