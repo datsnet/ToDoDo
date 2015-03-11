@@ -115,13 +115,15 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: delegate
     func cellClick(cell: TodoTableViewCell) {
-        
+        let indexPath = tableView.indexPathForCell(cell)!
+        toggleCheckButton(cell, indexPath: indexPath)
     }
     
     func checkButtonClick(cell: TodoTableViewCell) {
         let indexPath = tableView.indexPathForCell(cell)!
         toggleCheckButton(cell, indexPath: indexPath)
     }
+
 }
 
 
