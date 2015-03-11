@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class TodoTableViewCell: UITableViewCell {
+    weak var delegate: TodoTableViewCellDelegate?
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     @IBAction func checkButtonAction(sender: AnyObject) {
+        delegate?.checkButtonClick(self)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -33,4 +35,10 @@ class TodoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+protocol TodoTableViewCellDelegate: class {
+    // セルをタップした時に通知する
+    func cellClick(cell: TodoTableViewCell)->Void
+    func checkButtonClick(cell: TodoTableViewCell)->Void
 }
