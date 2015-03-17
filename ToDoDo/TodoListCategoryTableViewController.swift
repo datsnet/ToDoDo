@@ -82,8 +82,8 @@ class TodoListCategoryTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "More", handler:{action, indexpath in
-            println("MORE•ACTION");
+        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
+            println("EDIT•ACTION");
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
@@ -98,29 +98,26 @@ class TodoListCategoryTableViewController: UITableViewController {
         var inputTextField: UITextField?
         var passwordField: UITextField?
         
-        let alertController: UIAlertController = UIAlertController(title: "新規カテゴリの入力", message: "Input your ID and Password", preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "新規カテゴリの入力", message: "input category name", preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
             println("Pushed CANCEL")
         }
         alertController.addAction(cancelAction)
         
-        let logintAction: UIAlertAction = UIAlertAction(title: "Login", style: .Default) { action -> Void in
-            println("Pushed Login")
-            println(inputTextField?.text)
-            println(passwordField?.text)
-        }
-        alertController.addAction(logintAction)
+//        let addAction: UIAlertAction = UIAlertAction(title: "add", style: .Default) { action -> Void in
+//            println("add category")
+//            println(inputTextField?.text)
+//            println(passwordField?.text)
+//        }
+        
+        alertController.addAction(<#action: UIAlertAction#>)
         
         alertController.addTextFieldWithConfigurationHandler { textField -> Void in
             inputTextField = textField
-            textField.placeholder = "ID"
+            textField.placeholder = "category name"
         }
-        alertController.addTextFieldWithConfigurationHandler { textField -> Void in
-            passwordField = textField
-            textField.secureTextEntry = true
-            textField.placeholder = "password"
-        }
+
         
         presentViewController(alertController, animated: true, completion: nil)
     }
