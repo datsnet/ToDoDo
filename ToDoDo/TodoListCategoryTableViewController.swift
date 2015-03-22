@@ -31,14 +31,16 @@ class TodoListCategoryTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
     }
     
-    func insertNewCategory(sender: AnyObject) {
-        objects.insertObject(NSDate(), atIndex: 0)
+    func insertNewCategory(category: String!) {
+        if category == "" {
+            return
+        }
+        objects.insertObject(category, atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
     // #pragma mark - Segues
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow()
@@ -48,7 +50,6 @@ class TodoListCategoryTableViewController: UITableViewController {
     }
     
     // #pragma mark - Table View
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -81,22 +82,44 @@ class TodoListCategoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
-            println("EDIT•ACTION");
+        var editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
+            println("EDIT•ACTION")
+            var inputTextField: UITextField?
+            
+            let alertController: UIAlertController = UIAlertController(title: "カテゴリの編集", message: "edit category name", preferredStyle: .Alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                println("Pushed CANCEL")
+            }
+            alertController.addAction(cancelAction)
+            
+            let editAction: UIAlertAction = UIAlertAction(title: "edit", style: .Default) { action -> Void in
+                println("add category")
+                println(inputTextField?.text)
+                self.insertNewCategory(inputTextField!.text)
+            }
+            alertController.addAction(editAction)
+            
+            alertController.addTextFieldWithConfigurationHandler { textField -> Void in
+//                inputTextField = textField
+                textField.placeholder = "category name"
+                textField.text = self.objects[indexPath.row] as String
+            }
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
         });
-        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        editRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
             println("DELETE•ACTION");
-        });
+            self.objects.removeObjectAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)});
         
-        return [deleteRowAction, moreRowAction];
+        return [deleteRowAction, editRowAction];
     }
     
     @IBAction func inputFieldBtn(sender: UIButton) {
         var inputTextField: UITextField?
-        var passwordField: UITextField?
         
         let alertController: UIAlertController = UIAlertController(title: "新規カテゴリの入力", message: "input category name", preferredStyle: .Alert)
         
@@ -105,13 +128,12 @@ class TodoListCategoryTableViewController: UITableViewController {
         }
         alertController.addAction(cancelAction)
         
-//        let addAction: UIAlertAction = UIAlertAction(title: "add", style: .Default) { action -> Void in
-//            println("add category")
-//            println(inputTextField?.text)
-//            println(passwordField?.text)
-//        }
-        
-        alertController.addAction(<#action: UIAlertAction#>)
+        let addAction: UIAlertAction = UIAlertAction(title: "add", style: .Default) { action -> Void in
+            println("add category")
+            println(inputTextField?.text)
+            self.insertNewCategory(inputTextField!.text)
+        }
+        alertController.addAction(addAction)
         
         alertController.addTextFieldWithConfigurationHandler { textField -> Void in
             inputTextField = textField
