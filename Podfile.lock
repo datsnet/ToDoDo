@@ -20,14 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - PageMenu (1.2.3)
   - TWSReleaseNotesView (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - PageMenu (~> 1.2.3)
   - TWSReleaseNotesView (~> 1.2.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  TWSReleaseNotesView: 78ecc93fbf0d9a5f22182269cc0ab04509457271
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  PageMenu: a7358b1c38cc2167a2b072a78f4683764c4d03ba
+  TWSReleaseNotesView: 52cfe9ddf562b171998a5f285ca4f843880ce6f8
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.1
