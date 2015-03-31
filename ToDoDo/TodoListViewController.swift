@@ -55,6 +55,45 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         todoItems = [item1, item2]
     }
     
+    // #pragma mark - Table View
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
+            println("EDIT•ACTION")
+            var inputTextField: UITextField?
+            
+            let alertController: UIAlertController = UIAlertController(title: "カテゴリの編集", message: "edit category name", preferredStyle: .Alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                println("Pushed CANCEL")
+            }
+            alertController.addAction(cancelAction)
+            
+            let editAction: UIAlertAction = UIAlertAction(title: "edit", style: .Default) { action -> Void in
+                println("add category")
+                println(inputTextField?.text)
+//                self.insertNewCategory(inputTextField!.text)
+            }
+            alertController.addAction(editAction)
+            
+            alertController.addTextFieldWithConfigurationHandler { textField -> Void in
+                //                inputTextField = textField
+                textField.placeholder = "category name"
+//                textField.text = self.objects[indexPath.row] as String
+            }
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        });
+        editRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
+            println("DELETE•ACTION");
+//            self.objects.removeObjectAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)});
+        
+        return [deleteRowAction, editRowAction];
+    }
+
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
         return todoItems.count;

@@ -29,16 +29,11 @@
 		F04AFE5E1A8F27B100EEF845 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AFE5C1A8F27B100EEF845 /* TodoListViewController.swift */; };
 		F07B015B1A90E1DF0025D3CE /* TotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */; };
 		F07B015D1A90E2370025D3CE /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */; };
-		F0903EA21A920F2C001714A4 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0903E9E1A920F2C001714A4 /* FriendTableViewCell.swift */; };
-		F0903EA31A920F2C001714A4 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0903E9F1A920F2C001714A4 /* FriendTableViewCell.xib */; };
-		F0903EA41A920F2C001714A4 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0903EA01A920F2C001714A4 /* TestTableViewController.swift */; };
-		F0903EA51A920F2C001714A4 /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0903EA11A920F2C001714A4 /* TestTableViewController.xib */; };
 		F0903EA71A920FC4001714A4 /* star_white.png in Resources */ = {isa = PBXBuildFile; fileRef = F0903EA61A920FC4001714A4 /* star_white.png */; };
 		F0903EA91A920FE8001714A4 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = F0903EA81A920FE8001714A4 /* close.png */; };
 		F0903EAC1A924037001714A4 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0903EAB1A924037001714A4 /* TodoItem.swift */; };
 		F0903EAD1A924AA3001714A4 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0903EAB1A924037001714A4 /* TodoItem.swift */; };
 		F0D7DB591A8D00BF004425A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7DB581A8D00BF004425A0 /* AppDelegate.swift */; };
-		F0D7DB5E1A8D00BF004425A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7DB5D1A8D00BF004425A0 /* ViewController.swift */; };
 		F0D7DB611A8D00BF004425A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB5F1A8D00BF004425A0 /* Main.storyboard */; };
 		F0D7DB631A8D00BF004425A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB621A8D00BF004425A0 /* Images.xcassets */; };
 		F0D7DB661A8D00BF004425A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB641A8D00BF004425A0 /* LaunchScreen.xib */; };
@@ -70,17 +65,12 @@
 		F04AFE5C1A8F27B100EEF845 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TotoTableViewCell.xib; sourceTree = "<group>"; };
 		F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
-		F0903E9E1A920F2C001714A4 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
-		F0903E9F1A920F2C001714A4 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
-		F0903EA01A920F2C001714A4 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
-		F0903EA11A920F2C001714A4 /* TestTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
 		F0903EA61A920FC4001714A4 /* star_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_white.png; sourceTree = "<group>"; };
 		F0903EA81A920FE8001714A4 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		F0903EAB1A924037001714A4 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		F0D7DB531A8D00BF004425A0 /* ToDoDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D7DB571A8D00BF004425A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0D7DB581A8D00BF004425A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0D7DB5D1A8D00BF004425A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0D7DB601A8D00BF004425A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0D7DB621A8D00BF004425A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0D7DB651A8D00BF004425A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -146,11 +136,6 @@
 		F07B01591A90DF6E0025D3CE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F0903E9E1A920F2C001714A4 /* FriendTableViewCell.swift */,
-				F0903E9F1A920F2C001714A4 /* FriendTableViewCell.xib */,
-				F0903EA01A920F2C001714A4 /* TestTableViewController.swift */,
-				F0903EA11A920F2C001714A4 /* TestTableViewController.xib */,
-				F0D7DB5D1A8D00BF004425A0 /* ViewController.swift */,
 				F04AFE591A8F24FB00EEF845 /* TodoListViewController.xib */,
 				F04AFE5C1A8F27B100EEF845 /* TodoListViewController.swift */,
 				F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */,
@@ -334,9 +319,7 @@
 				F0D7DB611A8D00BF004425A0 /* Main.storyboard in Resources */,
 				F0D7DB661A8D00BF004425A0 /* LaunchScreen.xib in Resources */,
 				F0903EA71A920FC4001714A4 /* star_white.png in Resources */,
-				F0903EA51A920F2C001714A4 /* TestTableViewController.xib in Resources */,
 				F0903EA91A920FE8001714A4 /* close.png in Resources */,
-				F0903EA31A920F2C001714A4 /* FriendTableViewCell.xib in Resources */,
 				F0D7DB631A8D00BF004425A0 /* Images.xcassets in Resources */,
 				F07B015B1A90E1DF0025D3CE /* TotoTableViewCell.xib in Resources */,
 				F04AFE5A1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */,
@@ -394,16 +377,13 @@
 			files = (
 				6F9DFB121AB020DB00091434 /* Tag.swift in Sources */,
 				6F9DFB0F1AB020DB00091434 /* Todo.swift in Sources */,
-				F0D7DB5E1A8D00BF004425A0 /* ViewController.swift in Sources */,
 				F0903EAC1A924037001714A4 /* TodoItem.swift in Sources */,
 				6F9DFB151AB044FF00091434 /* TodoManager.swift in Sources */,
 				F04AFCD71A8F201300EEF845 /* CAPSPageMenu.swift in Sources */,
 				F07B015D1A90E2370025D3CE /* TodoTableViewCell.swift in Sources */,
 				F0D7DB591A8D00BF004425A0 /* AppDelegate.swift in Sources */,
 				F04AFE5D1A8F27B100EEF845 /* TodoListViewController.swift in Sources */,
-				F0903EA21A920F2C001714A4 /* FriendTableViewCell.swift in Sources */,
 				6F9DFB0D1AB0205900091434 /* ToDoDo.xcdatamodel in Sources */,
-				F0903EA41A920F2C001714A4 /* TestTableViewController.swift in Sources */,
 				6F9DFB071AB0014100091434 /* TodoListCategoryTableViewController.swift in Sources */,
 				6F9DFB181AB0480300091434 /* Category.swift in Sources */,
 			);

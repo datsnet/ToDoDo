@@ -53,11 +53,11 @@ class TodoListCategoryTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+    // #pragma mark - Table View
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
-    
+    // #pragma mark - Table View
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
@@ -66,12 +66,12 @@ class TodoListCategoryTableViewController: UITableViewController {
         
         return cell
     }
-    
+    // #pragma mark - Table View
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
+    // #pragma mark - Table View
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             objects.removeObjectAtIndex(indexPath.row)
@@ -80,7 +80,7 @@ class TodoListCategoryTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-    
+    // #pragma mark - Table View
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         var editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
             println("EDIT•ACTION")
@@ -117,6 +117,14 @@ class TodoListCategoryTableViewController: UITableViewController {
         
         return [deleteRowAction, editRowAction];
     }
+    
+    // #pragma mark - Table View
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+        
+        navigationController?.pushViewController(TodoListViewController(), animated: true)
+
+    }
+    
     
     @IBAction func inputFieldBtn(sender: UIButton) {
         var inputTextField: UITextField?
