@@ -10,6 +10,8 @@
 		2CC71EF13A7A4F4C052AABF0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D3EE37E93D1E55D92E8026 /* libPods.a */; };
 		6F0ED2A01A91822E005F9001 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */; };
 		6F0ED2A11A91A219005F9001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB621A8D00BF004425A0 /* Images.xcassets */; };
+		6F5E75411ACD3974009E7CCC /* TotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */; };
+		6F5E75421ACD3980009E7CCC /* TodoListCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB061AB0014100091434 /* TodoListCategoryTableViewController.swift */; };
 		6F9DFB071AB0014100091434 /* TodoListCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB061AB0014100091434 /* TodoListCategoryTableViewController.swift */; };
 		6F9DFB0D1AB0205900091434 /* ToDoDo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB0C1AB0205900091434 /* ToDoDo.xcdatamodel */; };
 		6F9DFB0F1AB020DB00091434 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB0E1AB020DB00091434 /* Todo.swift */; };
@@ -330,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5E75411ACD3974009E7CCC /* TotoTableViewCell.xib in Resources */,
 				F04AFE5B1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */,
 				6F0ED2A11A91A219005F9001 /* Images.xcassets in Resources */,
 			);
@@ -396,6 +399,7 @@
 				F0903EAD1A924AA3001714A4 /* TodoItem.swift in Sources */,
 				6F9DFB101AB020DB00091434 /* Todo.swift in Sources */,
 				F04AFE5E1A8F27B100EEF845 /* TodoListViewController.swift in Sources */,
+				6F5E75421ACD3980009E7CCC /* TodoListCategoryTableViewController.swift in Sources */,
 				6F9DFB131AB020DB00091434 /* Tag.swift in Sources */,
 				F04AFCD81A8F201300EEF845 /* CAPSPageMenu.swift in Sources */,
 				6F9DFB191AB0480300091434 /* Category.swift in Sources */,

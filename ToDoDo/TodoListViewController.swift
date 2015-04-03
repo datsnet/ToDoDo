@@ -9,13 +9,29 @@
 import Foundation
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoTableViewCellDelegate, UITextFieldDelegate {
 
-    @IBOutlet var tableView : UITableView!
+
     @IBOutlet weak var todoAddField: UITextField!
     
+    @IBOutlet weak var addItemTextField: UITextField!
+    @IBOutlet var tableView: UITableView!
     var todoTableViewCell: TodoTableViewCell!
     var todoItems = [TodoItem]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        
+        //カスタムセルを指定
+        let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
+        tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
+        // TODO DBから値を取得して表示する
+        var item1 = TodoItem()
+        var item2 = TodoItem()
+        item1.setTodoTitle("todo1")
+        item2.setTodoTitle("todo2")
+        todoItems = [item1, item2]
+    }
     
     @IBAction func todoAddAction(sender: AnyObject) {
         var todoText: NSString = todoAddField.text
@@ -37,22 +53,6 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         // テキストフィールドのクリア
         todoAddField.text = "";
         
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        //カスタムセルを指定
-        let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
-        tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
-        // TODODBから値を取得して表示する
-        var item1 = TodoItem()
-        var item2 = TodoItem()
-        item1.setTodoTitle("todo1")
-        item2.setTodoTitle("todo2")
-        todoItems = [item1, item2]
     }
     
     // #pragma mark - Table View
@@ -163,6 +163,20 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         toggleCheckButton(cell, indexPath: indexPath)
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.text == "" { return true }
+        textField.resignFirstResponder()
+        println(textField.text)
+        var item = TodoItem()
+        item.todoTitle = textField.text
+        self.todoItems.insert(item, atIndex: 0)
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        
+        // フィールドを消す
+        textField.text = ""
+        return false;
+    }
 }
 
 

@@ -120,9 +120,11 @@ class TodoListCategoryTableViewController: UITableViewController {
     
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+//        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as TodoListViewController
+//        navigationController?.pushViewController(SampleViewController(), animated: true)
         
-        navigationController?.pushViewController(TodoListViewController(), animated: true)
-
+        let todoListViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as TodoListViewController
+        navigationController?.pushViewController(todoListViewController, animated: true)
     }
     
     
