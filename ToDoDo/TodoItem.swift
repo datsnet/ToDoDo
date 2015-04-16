@@ -10,20 +10,20 @@ import Foundation
 
 class TodoItem: NSObject {
     var isChecked: Bool! = false
-    var todoTitle: NSString!
+    var todoTitle: String!
 
-    convenience init(isChecked: Bool, todoTitle: NSString) {
+    convenience init(isChecked: Bool, todoTitle: String) {
         self.init()
         self.isChecked = isChecked
         self.todoTitle = todoTitle
     }
-    func getTodoTitle() -> NSString {
+    func getTodoTitle() -> String {
         return todoTitle!
     }
-    func setTodoTitle(todoTitle: NSString) {
+    func todoTitle(todoTitle: String) {
         self.todoTitle = todoTitle
     }
-    func setIsChecked(isChecked: Bool) {
+    func isChecked(isChecked: Bool) {
         self.isChecked = isChecked
     }
     func getIsChecked() -> Bool {
