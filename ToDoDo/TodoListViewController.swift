@@ -28,8 +28,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         // TODO DBから値を取得して表示する
         var item1 = TodoItem()
         var item2 = TodoItem()
-        item1.setTodoTitle("todo1")
-        item2.setTodoTitle("todo2")
+        item1.todoTitle("todo1")
+        item2.todoTitle("todo2")
         todoItems = [item1, item2]
     }
     
@@ -46,7 +46,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         // TODO テーブルに表示する
         // テーブルの先頭に新規アイテムを挿入する
         // データソースの更新
-        var item = TodoItem(isChecked: false, todoTitle: todoText)
+        var item = TodoItem(isChecked: false, todoTitle: todoText as String)
         todoItems.insert(item, atIndex: 0)
         // テーブルビューの更新
         tableView?.reloadData();
@@ -100,7 +100,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
-        let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell", forIndexPath: indexPath) as TodoTableViewCell
+        let cell: TodoTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TodoTableViewCell", forIndexPath: indexPath) as! TodoTableViewCell
         cell.delegate = self
         let item = todoItems[indexPath.row]
         cell.todoTitle.text = item.todoTitle
@@ -109,6 +109,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+        let todoDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoDetailViewController") as! TodoDetailViewController
+        navigationController?.pushViewController(todoDetailViewController, animated: true)
         
     }
     
@@ -118,12 +120,12 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         var text = NSAttributedString()
         if item.isChecked == true {
             checkButton.setImage(UIImage(named: "done"), forState: UIControlState.Normal)
-            text = NSAttributedString(string: item.todoTitle!, attributes: [
+            text = NSAttributedString(string: item.todoTitle! as String, attributes: [
                 NSStrikethroughStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue,
                 ])
         } else {
             checkButton.setImage(UIImage(named: "yet"), forState: UIControlState.Normal)
-            text = NSAttributedString(string: item.todoTitle!, attributes: [
+            text = NSAttributedString(string: item.todoTitle! as String, attributes: [
                 NSStrikethroughStyleAttributeName : NSUnderlineStyle.StyleNone.rawValue,
                 ])
         }
@@ -138,13 +140,13 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         if item.isChecked == true {
             item.isChecked = false
             checkButton.setImage(UIImage(named: "yet"), forState: UIControlState.Normal)
-            text = NSAttributedString(string: item.todoTitle!, attributes: [
+            text = NSAttributedString(string: item.todoTitle! as String, attributes: [
                 NSStrikethroughStyleAttributeName : NSUnderlineStyle.StyleNone.rawValue,
                 ])
         } else {
             item.isChecked = true
             checkButton.setImage(UIImage(named: "done"), forState: UIControlState.Normal)
-            text = NSAttributedString(string: item.todoTitle!, attributes: [
+            text = NSAttributedString(string: item.todoTitle! as String, attributes: [
                 NSStrikethroughStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue,
                 ])
         }

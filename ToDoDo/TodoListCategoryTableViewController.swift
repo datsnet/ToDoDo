@@ -44,7 +44,7 @@ class TodoListCategoryTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let object = objects[indexPath!.row] as NSDate
+            let object = objects[indexPath!.row] as! NSDate
 //            (segue.destinationViewController as TodoListViewController).detailItem = object
         }
     }
@@ -59,9 +59,9 @@ class TodoListCategoryTableViewController: UITableViewController {
     }
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        let object = objects[indexPath.row] as NSString
+        let object = objects[indexPath.row] as! NSString
         cell.textLabel?.text = object.description
         
         return cell
@@ -103,7 +103,7 @@ class TodoListCategoryTableViewController: UITableViewController {
             alertController.addTextFieldWithConfigurationHandler { textField -> Void in
 //                inputTextField = textField
                 textField.placeholder = "category name"
-                textField.text = self.objects[indexPath.row] as String
+                textField.text = self.objects[indexPath.row] as! String
             }
             self.presentViewController(alertController, animated: true, completion: nil)
             
@@ -123,7 +123,7 @@ class TodoListCategoryTableViewController: UITableViewController {
 //        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as TodoListViewController
 //        navigationController?.pushViewController(SampleViewController(), animated: true)
         
-        let todoListViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as TodoListViewController
+        let todoListViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as! TodoListViewController
         navigationController?.pushViewController(todoListViewController, animated: true)
     }
     

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dM6-Bc-sDF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dM6-Bc-sDF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -29,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="KE2-tt-1Aa" style="IBUITableViewCellStyleDefault" id="dRJ-Mq-FiA">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="KE2-tt-1Aa" style="IBUITableViewCellStyleDefault" id="dRJ-Mq-FiA" customClass="TodoTableViewCell" customModule="ToDoDo" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRJ-Mq-FiA" id="4CY-qU-fFs">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -54,7 +55,6 @@
         <!--Todo List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TodoListViewController" id="vXZ-lx-hvc" customClass="TodoListViewController" customModule="ToDoDo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
@@ -80,7 +80,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="99" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoTableViewCell" id="KWb-pc-HkJ" customClass="TodoTableViewCell" customModule="ToDoDo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoTableViewCell" id="KWb-pc-HkJ">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KWb-pc-HkJ" id="zpL-Su-6h7">
@@ -110,13 +110,14 @@
                         <outlet property="tableView" destination="GCF-eg-5Dc" id="wtP-TD-3yt"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-297" y="161"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Detail View Controller-->
         <scene sceneID="lNM-Yf-EDb">
             <objects>
-                <viewController id="tFj-Cm-K87" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodoDetailViewController" id="tFj-Cm-K87" customClass="TodoDetailViewController" customModule="ToDoDo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3m0-O5-jm9"/>
                         <viewControllerLayoutGuide type="bottom" id="K9q-64-1dA"/>
@@ -124,8 +125,54 @@
                     <view key="view" contentMode="scaleToFill" id="9DA-Yl-6Aq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-TU-lT5">
+                                <rect key="frame" x="26" y="35" width="568" height="156"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KR-Gs-1ai">
+                                <rect key="frame" x="26" y="199" width="410" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="410" id="HSz-fG-t9z"/>
+                                </constraints>
+                                <state key="normal" title="期限日：2015/4/10(金)">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickLimitation:" destination="tFj-Cm-K87" eventType="touchUpInside" id="a6H-hw-VWY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O34-U4-EKq">
+                                <rect key="frame" x="26" y="237" width="410" height="30"/>
+                                <state key="normal" title="リマインダー：2015/4/10(金) 16:00">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickReminder:" destination="tFj-Cm-K87" eventType="touchUpInside" id="xTx-Zz-On1"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="7QR-TU-lT5" secondAttribute="trailing" constant="-10" id="0W8-Wa-7Ny"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="top" secondItem="7QR-TU-lT5" secondAttribute="bottom" constant="8" id="GNl-AI-jaZ"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="leading" secondItem="9DA-Yl-6Aq" secondAttribute="leadingMargin" constant="10" id="b4X-2f-t2B"/>
+                            <constraint firstItem="7QR-TU-lT5" firstAttribute="top" secondItem="3m0-O5-jm9" secondAttribute="bottom" constant="15" id="e26-3P-2zR"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="leading" secondItem="O34-U4-EKq" secondAttribute="leading" id="hba-0O-dUT"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="trailing" secondItem="O34-U4-EKq" secondAttribute="trailing" id="ktE-1u-mh6"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="leading" secondItem="7QR-TU-lT5" secondAttribute="leading" id="nPr-NC-d1T"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="top" secondItem="9DA-Yl-6Aq" secondAttribute="top" constant="199" id="qvK-Wm-Lzw"/>
+                            <constraint firstItem="0KR-Gs-1ai" firstAttribute="top" secondItem="7QR-TU-lT5" secondAttribute="bottom" constant="8" symbolic="YES" id="wT6-eE-hZ1"/>
+                            <constraint firstItem="O34-U4-EKq" firstAttribute="top" secondItem="0KR-Gs-1ai" secondAttribute="bottom" constant="8" symbolic="YES" id="y1a-FP-qka"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="limitButton" destination="0KR-Gs-1ai" id="5fq-Of-qwW"/>
+                        <outlet property="reminderButton" destination="O34-U4-EKq" id="hrO-Lg-AaL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oMr-aH-HqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

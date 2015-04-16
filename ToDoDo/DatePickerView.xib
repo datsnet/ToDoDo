@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePickerView" customModule="ToDoDo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0PI-He-6P9">
+                    <rect key="frame" x="0.0" y="44" width="320" height="162"/>
+                    <date key="date" timeIntervalSinceReferenceDate="450771427.67369998">
+                        <!--2015-04-15 06:17:07 +0000-->
+                    </date>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="-2" y="438" width="402" height="162"/>
+                    </variation>
+                </datePicker>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ica-pz-1WK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <items>
+                        <barButtonItem title="Cancel" id="BbJ-g1-GKA">
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" id="XJV-m3-4GL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="E2O-Rp-sXh"/>
+                        <barButtonItem style="done" systemItem="done" id="CYG-6f-JSq">
+                            <connections>
+                                <action selector="doneAction:" destination="iN0-l3-epB" id="rJp-kb-bMx"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="394" width="400" height="44"/>
+                    </variation>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ica-pz-1WK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RMj-4Q-LIe"/>
+                <constraint firstItem="0PI-He-6P9" firstAttribute="top" secondItem="ica-pz-1WK" secondAttribute="bottom" id="Ydg-q7-ihF"/>
+                <constraint firstItem="ica-pz-1WK" firstAttribute="trailing" secondItem="0PI-He-6P9" secondAttribute="trailing" id="ci8-I3-d9H"/>
+                <constraint firstItem="0PI-He-6P9" firstAttribute="top" secondItem="ica-pz-1WK" secondAttribute="bottom" id="fog-Du-lMP"/>
+                <constraint firstItem="ica-pz-1WK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iEd-sL-yQo"/>
+                <constraint firstItem="0PI-He-6P9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wAS-UF-49L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="datePicker" destination="0PI-He-6P9" id="ioO-hh-KyY"/>
+            </connections>
+            <point key="canvasLocation" x="292" y="272"/>
+        </view>
+    </objects>
+</document>

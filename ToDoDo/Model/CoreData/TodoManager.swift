@@ -13,12 +13,12 @@ import UIKit
 class TodoManager {
     class func insertTodoCategory(data: NSString) -> Bool {
         // managedObjectContext取得
-        var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
         
         // 新しいオブジェクトを作成
         var newCategory = NSEntityDescription.insertNewObjectForEntityForName(
-            "Category", inManagedObjectContext: context) as NSManagedObject
+            "Category", inManagedObjectContext: context) as! NSManagedObject
         newCategory.setValue(data, forKey: "name")
         
         // 作成したオブジェクトを保存
