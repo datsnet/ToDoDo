@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Category" representedClassName="Category" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Category" representedClassName="ToDoDo.Category" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="todo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Category" syncable="YES"/>
     </entity>
-    <entity name="Tag" representedClassName="Tag" syncable="YES">
+    <entity name="Tag" representedClassName="ToDoDo.Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="todo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Todo" inverseName="tag" inverseEntity="Todo" syncable="YES"/>
+        <relationship name="todo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Todo" syncable="YES"/>
     </entity>
-    <entity name="Todo" representedClassName="Todo" syncable="YES">
+    <entity name="Todo" representedClassName="ToDoDo.Todo" syncable="YES">
         <attribute name="complete" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="limitedDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -18,11 +18,11 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reminderDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="todo" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tag" positionX="279" positionY="81" width="128" height="88"/>
-        <element name="Todo" positionX="-45" positionY="0" width="128" height="163"/>
-        <element name="Category" positionX="126" positionY="81" width="128" height="88"/>
+        <element name="Category" positionX="-18" positionY="27" width="128" height="90"/>
+        <element name="Tag" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Todo" positionX="-36" positionY="9" width="128" height="165"/>
     </elements>
 </model>

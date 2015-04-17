@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoTableViewCellDelegate, UITextFieldDelegate {
 
@@ -26,15 +27,33 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
         tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
         // TODO DBから値を取得して表示する
-        var item1 = TodoItem()
-        var item2 = TodoItem()
-        item1.todoTitle("todo1")
-        item2.todoTitle("todo2")
-        todoItems = [item1, item2]
+//        var item1 = TodoItem()
+//        var item2 = TodoItem()
+//        item1.todoTitle("todo1")
+//        item2.todoTitle("todo2")
+//        todoItems = [item1, item2]
+        
+        var manager = CoreDataManager()
+        let fetchRequest = NSFetchRequest(entityName: "Todo")
+        let sortDescriptor = NSSortDescriptor(key: "sort", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
+            let results: NSArray! = CoreDataManager.fetchData(fetchRequest)
+            var i = 0
+            for item in results {
+                if let todo = item as? Todo {
+                    var todoItem: TodoItem = TodoItem()
+                    todoItem.todoTitle = todo.name
+                    todoItem.isChecked = todo.complete.boolValue
+                    todoItems.insert(todoItem, atIndex: i)
+                }
+                
+                i++
+            }
+        }
     }
     
-    @IBAction func todoAddAction(sender: AnyObject) {
-        var todoText: NSString = todoAddField.text
+    func todoAdd(todoText: String) {
         NSLog("todoText : %@", todoText)
         
         if (todoText.isEqual(nil)) {
@@ -46,13 +65,20 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         // TODO テーブルに表示する
         // テーブルの先頭に新規アイテムを挿入する
         // データソースの更新
+//        let entity = NSEntityDescription.entityForName("Todo", inManagedObjectContext: managedObjectContext!)
+//        let todo = Todo(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+//
+//        todo.name = todoText as String
+//        todo.complete = 0
+//        CoreDataManager.saveContext(managedObjectContext!)
+        
+        let manager = TodoManager.sharedInstance
+        manager.insertTodoItem(todoText)
+        
         var item = TodoItem(isChecked: false, todoTitle: todoText as String)
         todoItems.insert(item, atIndex: 0)
         // テーブルビューの更新
         tableView?.reloadData();
-        // テキストフィールドのクリア
-        todoAddField.text = "";
-        
     }
     
     // #pragma mark - Table View
@@ -168,15 +194,16 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.text == "" { return true }
         textField.resignFirstResponder()
-        println(textField.text)
-        var item = TodoItem()
-        item.todoTitle = textField.text
-        self.todoItems.insert(item, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        
-        // フィールドを消す
-        textField.text = ""
+//        println(textField.text)
+//        var item = TodoItem()
+//        item.todoTitle = textField.text
+//        self.todoItems.insert(item, atIndex: 0)
+//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+//        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+//        
+//        // フィールドを消す
+//        textField.text = ""
+        todoAdd(textField.text)
         return false;
     }
 }

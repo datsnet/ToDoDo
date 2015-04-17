@@ -11,7 +11,10 @@ import CoreData
 import UIKit
 
 class TodoManager {
-    class func insertTodoCategory(data: NSString) -> Bool {
+    // Singleton
+    static var sharedInstance = TodoManager()
+    
+    func insertTodoCategory(data: String) -> Bool {
         // managedObjectContext取得
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -31,4 +34,33 @@ class TodoManager {
         println("New Object Saved!")
         return true
     }
+    
+    func insertTodoItem(data: String) -> Bool {
+        // managedObjectContext取得
+        var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context : NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("Todo", inManagedObjectContext: context)
+        let todo = Todo(entity: entity!, insertIntoManagedObjectContext: context)
+        
+//        todo.name = data
+//        todo.complete = 0
+
+        todo.setValue(data, forKey: "name")
+        todo.setValue(0, forKey: "complete")
+        
+        
+        // オブジェクトを保存
+        var error: NSError? = nil
+        if !context.save(&error) {
+            return false
+        }
+        
+        println(data)
+        println("New Object Saved!")
+        return true
+
+    }
+    
+    
 }
