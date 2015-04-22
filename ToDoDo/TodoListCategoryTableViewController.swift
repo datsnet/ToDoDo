@@ -61,6 +61,8 @@ class TodoListCategoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
+        // TODO DBから取得する
+        
         let object = objects[indexPath.row] as! NSString
         cell.textLabel?.text = object.description
         
@@ -139,9 +141,11 @@ class TodoListCategoryTableViewController: UITableViewController {
         alertController.addAction(cancelAction)
         
         let addAction: UIAlertAction = UIAlertAction(title: "add", style: .Default) { action -> Void in
-            println("add category")
-            println(inputTextField?.text)
-            self.insertNewCategory(inputTextField!.text)
+            let inputText = inputTextField!.text
+            // DBに入れる
+            let manager = TodoCoreDataManager.sharedInstance
+            manager.insertTodoCategoryItem(inputText)
+            self.insertNewCategory(inputText)
         }
         alertController.addAction(addAction)
         

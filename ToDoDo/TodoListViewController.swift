@@ -33,22 +33,33 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 //        item2.todoTitle("todo2")
 //        todoItems = [item1, item2]
         
-        var manager = CoreDataManager()
-        let fetchRequest = NSFetchRequest(entityName: "Todo")
-        let sortDescriptor = NSSortDescriptor(key: "sort", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
-            let results: NSArray! = CoreDataManager.fetchData(fetchRequest)
-            var i = 0
-            for item in results {
-                if let todo = item as? Todo {
-                    var todoItem: TodoItem = TodoItem()
-                    todoItem.todoTitle = todo.name
-                    todoItem.isChecked = todo.complete.boolValue
-                    todoItems.insert(todoItem, atIndex: i)
-                }
-                
-                i++
+//        var manager = CoreDataManager()
+//        let fetchRequest = NSFetchRequest(entityName: "Todo")
+//        let sortDescriptor = NSSortDescriptor(key: "sort", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
+//            let results: NSArray! = CoreDataManager.fetchData(fetchRequest)
+//            var i = 0
+//            for item in results {
+//                if let todo = item as? Todo {
+//                    var todoItem: TodoItem = TodoItem()
+//                    todoItem.todoTitle = todo.name
+//                    todoItem.isChecked = todo.complete.boolValue
+//                    todoItems.insert(todoItem, atIndex: i)
+//                }
+//                
+//                i++
+//            }
+//        }
+        
+        let manager = TodoCoreDataManager.sharedInstance
+        let results: [AnyObject]! = manager.selectAllTodoItem()
+        for var i = 0; i < results!.count; i++ {
+            if let todo = results[i] as? Todo {
+                var todoItem: TodoItem = TodoItem()
+                todoItem.todoTitle = todo.name
+                todoItem.isChecked = todo.complete.boolValue
+                todoItems.insert(todoItem, atIndex: i)
             }
         }
     }
@@ -72,7 +83,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 //        todo.complete = 0
 //        CoreDataManager.saveContext(managedObjectContext!)
         
-        let manager = TodoManager.sharedInstance
+        let manager = TodoCoreDataManager.sharedInstance
         manager.insertTodoItem(todoText)
         
         var item = TodoItem(isChecked: false, todoTitle: todoText as String)

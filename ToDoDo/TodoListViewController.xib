@@ -41,16 +41,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="U1N-tk-1Dq" secondAttribute="bottom" id="5mm-9R-RaL"/>
-                <constraint firstItem="U1N-tk-1Dq" firstAttribute="leading" secondItem="CCq-cJ-zBs" secondAttribute="leading" id="9uU-5X-q1R"/>
-                <constraint firstAttribute="trailing" secondItem="XSe-Uz-fnj" secondAttribute="trailing" constant="8" id="Cma-x0-2aO"/>
-                <constraint firstItem="U1N-tk-1Dq" firstAttribute="leading" secondItem="CCq-cJ-zBs" secondAttribute="leading" id="Dsm-Gc-m4P"/>
-                <constraint firstItem="XSe-Uz-fnj" firstAttribute="leading" secondItem="CCq-cJ-zBs" secondAttribute="leading" constant="8" id="HDO-Fp-oUW"/>
-                <constraint firstItem="U1N-tk-1Dq" firstAttribute="centerX" secondItem="XSe-Uz-fnj" secondAttribute="centerX" id="ILi-AN-7g9"/>
-                <constraint firstAttribute="trailing" secondItem="U1N-tk-1Dq" secondAttribute="trailing" id="K0a-QP-8oM"/>
-                <constraint firstItem="U1N-tk-1Dq" firstAttribute="top" secondItem="XSe-Uz-fnj" secondAttribute="bottom" constant="28" id="OwC-XW-AbQ"/>
-                <constraint firstAttribute="bottom" secondItem="U1N-tk-1Dq" secondAttribute="bottom" id="gqy-02-Pxb"/>
-                <constraint firstItem="XSe-Uz-fnj" firstAttribute="top" secondItem="CCq-cJ-zBs" secondAttribute="top" constant="47" id="mbT-4t-Fe6"/>
+                <constraint firstAttribute="trailing" secondItem="U1N-tk-1Dq" secondAttribute="trailing" id="9Ye-2H-EUe"/>
+                <constraint firstAttribute="bottom" secondItem="U1N-tk-1Dq" secondAttribute="bottom" id="GCM-X6-o4M"/>
+                <constraint firstItem="U1N-tk-1Dq" firstAttribute="top" secondItem="XSe-Uz-fnj" secondAttribute="bottom" constant="28" id="Nip-c4-Poz"/>
+                <constraint firstItem="XSe-Uz-fnj" firstAttribute="leading" secondItem="CCq-cJ-zBs" secondAttribute="leading" constant="8" id="e8a-Jo-gyG"/>
+                <constraint firstAttribute="trailing" secondItem="XSe-Uz-fnj" secondAttribute="trailing" constant="8" id="fmO-NR-wgV"/>
+                <constraint firstItem="XSe-Uz-fnj" firstAttribute="top" secondItem="CCq-cJ-zBs" secondAttribute="top" constant="47" id="gGx-dZ-H1P"/>
+                <constraint firstItem="U1N-tk-1Dq" firstAttribute="leading" secondItem="CCq-cJ-zBs" secondAttribute="leading" id="mmp-r9-CBb"/>
             </constraints>
             <point key="canvasLocation" x="257" y="-218"/>
         </view>
