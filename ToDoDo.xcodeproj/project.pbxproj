@@ -10,10 +10,9 @@
 		2CC71EF13A7A4F4C052AABF0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D3EE37E93D1E55D92E8026 /* libPods.a */; };
 		6F0ED2A01A91822E005F9001 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */; };
 		6F0ED2A11A91A219005F9001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB621A8D00BF004425A0 /* Images.xcassets */; };
+		6F4CDAD11AE8D0FA00335CEF /* ToDoDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7DB711A8D00BF004425A0 /* ToDoDoTests.swift */; };
 		6F5E75411ACD3974009E7CCC /* TotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */; };
-		6F5E75421ACD3980009E7CCC /* TodoListCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB061AB0014100091434 /* TodoListCategoryTableViewController.swift */; };
 		6F933FB81ADFBD860055C4F2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F933FB71ADFBD860055C4F2 /* CoreDataManager.swift */; };
-		6F933FB91ADFC33E0055C4F2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F933FB71ADFBD860055C4F2 /* CoreDataManager.swift */; };
 		6F9340221AE0EFED0055C4F2 /* ToDoDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F9340201AE0EFED0055C4F2 /* ToDoDo.xcdatamodeld */; };
 		6F9340231AE0EFED0055C4F2 /* ToDoDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F9340201AE0EFED0055C4F2 /* ToDoDo.xcdatamodeld */; };
 		6F9DFB071AB0014100091434 /* TodoListCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB061AB0014100091434 /* TodoListCategoryTableViewController.swift */; };
@@ -22,10 +21,8 @@
 		6F9DFB121AB020DB00091434 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB111AB020DB00091434 /* Tag.swift */; };
 		6F9DFB131AB020DB00091434 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB111AB020DB00091434 /* Tag.swift */; };
 		6F9DFB151AB044FF00091434 /* TodoCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB141AB044FF00091434 /* TodoCoreDataManager.swift */; };
-		6F9DFB161AB044FF00091434 /* TodoCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB141AB044FF00091434 /* TodoCoreDataManager.swift */; };
 		6F9DFB181AB0480300091434 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB171AB0480300091434 /* Category.swift */; };
 		6F9DFB191AB0480300091434 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DFB171AB0480300091434 /* Category.swift */; };
-		6F9DFB1A1AB04CBC00091434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7DB581A8D00BF004425A0 /* AppDelegate.swift */; };
 		6FAB583D1ADE0A70000A98A0 /* PopUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAB583C1ADE0A70000A98A0 /* PopUpPickerView.swift */; };
 		6FAB583E1ADE0A70000A98A0 /* PopUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAB583C1ADE0A70000A98A0 /* PopUpPickerView.swift */; };
 		6FAB58431ADE39D7000A98A0 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FAB58421ADE39D7000A98A0 /* DatePickerView.xib */; };
@@ -37,7 +34,6 @@
 		F04AFE5A1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04AFE591A8F24FB00EEF845 /* TodoListViewController.xib */; };
 		F04AFE5B1A8F24FB00EEF845 /* TodoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04AFE591A8F24FB00EEF845 /* TodoListViewController.xib */; };
 		F04AFE5D1A8F27B100EEF845 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AFE5C1A8F27B100EEF845 /* TodoListViewController.swift */; };
-		F04AFE5E1A8F27B100EEF845 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AFE5C1A8F27B100EEF845 /* TodoListViewController.swift */; };
 		F07B015B1A90E1DF0025D3CE /* TotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F07B015A1A90E1DF0025D3CE /* TotoTableViewCell.xib */; };
 		F07B015D1A90E2370025D3CE /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B015C1A90E2370025D3CE /* TodoTableViewCell.swift */; };
 		F0903EA71A920FC4001714A4 /* star_white.png in Resources */ = {isa = PBXBuildFile; fileRef = F0903EA61A920FC4001714A4 /* star_white.png */; };
@@ -48,7 +44,6 @@
 		F0D7DB611A8D00BF004425A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB5F1A8D00BF004425A0 /* Main.storyboard */; };
 		F0D7DB631A8D00BF004425A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB621A8D00BF004425A0 /* Images.xcassets */; };
 		F0D7DB661A8D00BF004425A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D7DB641A8D00BF004425A0 /* LaunchScreen.xib */; };
-		F0D7DB721A8D00BF004425A0 /* ToDoDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7DB711A8D00BF004425A0 /* ToDoDoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,18 +431,13 @@
 			files = (
 				F0903EAD1A924AA3001714A4 /* TodoItem.swift in Sources */,
 				6F9DFB101AB020DB00091434 /* Todo.swift in Sources */,
-				F04AFE5E1A8F27B100EEF845 /* TodoListViewController.swift in Sources */,
-				6F5E75421ACD3980009E7CCC /* TodoListCategoryTableViewController.swift in Sources */,
+				6F4CDAD11AE8D0FA00335CEF /* ToDoDoTests.swift in Sources */,
 				6F9DFB131AB020DB00091434 /* Tag.swift in Sources */,
 				6FAB583E1ADE0A70000A98A0 /* PopUpPickerView.swift in Sources */,
 				6FB08B111AD4EA250028359E /* TodoDetailViewController.swift in Sources */,
 				6F9DFB191AB0480300091434 /* Category.swift in Sources */,
-				6F9DFB161AB044FF00091434 /* TodoCoreDataManager.swift in Sources */,
 				6FAB58471ADE3B26000A98A0 /* DatePickerView.swift in Sources */,
 				6F9340231AE0EFED0055C4F2 /* ToDoDo.xcdatamodeld in Sources */,
-				F0D7DB721A8D00BF004425A0 /* ToDoDoTests.swift in Sources */,
-				6F9DFB1A1AB04CBC00091434 /* AppDelegate.swift in Sources */,
-				6F933FB91ADFC33E0055C4F2 /* CoreDataManager.swift in Sources */,
 				6F0ED2A01A91822E005F9001 /* TodoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

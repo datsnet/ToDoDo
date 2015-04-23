@@ -10,11 +10,11 @@ import Foundation
 import CoreData
 import UIKit
 
-class TodoCoreDataManager {
+public class TodoCoreDataManager {
     // Singleton
-    static var sharedInstance = TodoCoreDataManager()
+    public static var sharedInstance = TodoCoreDataManager()
     
-    func insertTodoCategory(data: String) -> Bool {
+    public func insertTodoCategory(data: String) -> Bool {
         // managedObjectContext取得
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -35,7 +35,7 @@ class TodoCoreDataManager {
         return true
     }
     
-    func insertTodoCategoryItem(data: String) -> Bool {
+    public func insertTodoCategoryItem(data: String) -> Bool {
         // managedObjectContext取得
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -61,7 +61,7 @@ class TodoCoreDataManager {
 
     }
     
-    func insertTodoItem(data: String) -> Bool {
+    public func insertTodoItem(data: String) -> Bool {
         // managedObjectContext取得
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -88,7 +88,7 @@ class TodoCoreDataManager {
 
     }
     
-    func selectAllTodoItem() -> [AnyObject]? {
+    public func selectAllTodoItem() -> [AnyObject]? {
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
 
@@ -104,6 +104,21 @@ class TodoCoreDataManager {
         return results!
     }
     
+    public func selectAllTodoItem(appDelegate: AppDelegate) -> [AnyObject]? {
+//        var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context : NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Todo")
+        let sortDescriptor = NSSortDescriptor(key: "sort", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        var error: NSError?
+        var results = context.executeFetchRequest(fetchRequest, error: &error)
+        if ((error) != nil) {
+            println(error)
+        }
+        return results!
+    }
     
     
 }

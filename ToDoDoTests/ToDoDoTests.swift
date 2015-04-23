@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import ToDoDo
 
 class ToDoDoTests: XCTestCase {
     
@@ -19,6 +20,25 @@ class ToDoDoTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testSelectAllTodoItem() {
+        let manager = TodoCoreDataManager.sharedInstance
+        let results = manager.selectAllTodoItem()
+        if (results?.count < 0) {
+            //            XCTAssert(expression: BooleanType, <#message: String#>)
+            XCTAssertNil(results, "OK")
+        }
+    }
+    
+    func testinsertTodoItem() {
+        let manager = TodoCoreDataManager.sharedInstance
+        XCTAssert(manager.insertTodoItem("test"), "OK")
+    }
+    
+    func testInsertTodoCategoryItem() {
+        let manager = TodoCoreDataManager.sharedInstance
+        XCTAssert(manager.insertTodoCategoryItem("test"), "OK")
     }
     
     func testExample() {
