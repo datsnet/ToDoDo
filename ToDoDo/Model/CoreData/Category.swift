@@ -1,9 +1,9 @@
 //
 //  Category.swift
-//  ToDoDo
+//  
 //
-//  Created by 熱海大介 on 2015/03/11.
-//  Copyright (c) 2015年 com.datsnet. All rights reserved.
+//  Created by 熱海大介 on 2015/04/24.
+//
 //
 
 import Foundation
@@ -13,6 +13,6 @@ class Category: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var sort: NSNumber
-    @NSManaged var todo: NSManagedObject
+    @NSManaged var todos: NSSet
 
 }

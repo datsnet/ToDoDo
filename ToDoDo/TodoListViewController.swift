@@ -19,6 +19,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var tableView: UITableView!
     var todoTableViewCell: TodoTableViewCell!
     var todoItems = [TodoItem]()
+    var category: Category!
+    var test = String()
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -27,34 +29,12 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         let nib  = UINib(nibName: "TotoTableViewCell", bundle:nil)
         tableView.registerNib(nib, forCellReuseIdentifier:"TodoTableViewCell")
         // TODO DBから値を取得して表示する
-//        var item1 = TodoItem()
-//        var item2 = TodoItem()
-//        item1.todoTitle("todo1")
-//        item2.todoTitle("todo2")
-//        todoItems = [item1, item2]
-        
-//        var manager = CoreDataManager()
-//        let fetchRequest = NSFetchRequest(entityName: "Todo")
-//        let sortDescriptor = NSSortDescriptor(key: "sort", ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
-//            let results: NSArray! = CoreDataManager.fetchData(fetchRequest)
-//            var i = 0
-//            for item in results {
-//                if let todo = item as? Todo {
-//                    var todoItem: TodoItem = TodoItem()
-//                    todoItem.todoTitle = todo.name
-//                    todoItem.isChecked = todo.complete.boolValue
-//                    todoItems.insert(todoItem, atIndex: i)
-//                }
-//                
-//                i++
-//            }
-//        }
-        
         let manager = TodoCoreDataManager.sharedInstance
-        let results: [AnyObject]! = manager.selectAllTodoItem()
-        for var i = 0; i < results!.count; i++ {
+//        let results: [AnyObject]! = manager.selectAllTodoItem()
+        let results: [AnyObject]! = manager.selectTodoItemByCategory(Category: self.category)
+        
+        for var i = 0; i < results?.count; i++ {
+            
             if let todo = results[i] as? Todo {
                 var todoItem: TodoItem = TodoItem()
                 todoItem.todoTitle = todo.name
@@ -84,7 +64,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 //        CoreDataManager.saveContext(managedObjectContext!)
         
         let manager = TodoCoreDataManager.sharedInstance
-        manager.insertTodoItem(todoText)
+        manager.insertTodoItem(todoText, Category: self.category)
         
         var item = TodoItem(isChecked: false, todoTitle: todoText as String)
         todoItems.insert(item, atIndex: 0)

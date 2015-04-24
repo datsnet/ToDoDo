@@ -1,9 +1,9 @@
 //
 //  Todo.swift
-//  ToDoDo
+//  
 //
-//  Created by 熱海大介 on 2015/03/11.
-//  Copyright (c) 2015年 com.datsnet. All rights reserved.
+//  Created by 熱海大介 on 2015/04/24.
+//
 //
 
 import Foundation
@@ -18,6 +18,7 @@ class Todo: NSManagedObject {
     @NSManaged var note: String
     @NSManaged var reminderDate: NSDate
     @NSManaged var sort: NSNumber
-    @NSManaged var tag: NSSet
+    @NSManaged var tags: NSSet
+    @NSManaged var category: Category
 
 }

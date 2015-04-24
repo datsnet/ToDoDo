@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class TodoListCategoryTableViewController: UITableViewController {
-    var objects = NSMutableArray()
+//    var categoryItems = NSMutableArray()
+    var categoryItems = [Category]()
     
     
     override func awakeFromNib() {
@@ -21,8 +22,15 @@ class TodoListCategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Data Source
-        self.objects = NSMutableArray();
-        self.objects.insertObject("test", atIndex: 0)
+        // DBから取得する
+        self.categoryItems = [Category]();
+        let manager = TodoCoreDataManager.sharedInstance
+        let results: [AnyObject]! = manager.selectAllTodoCategoryItem()
+        for var i = 0; i < results!.count; i++ {
+            if let category = results[i] as? Category {
+                self.categoryItems.insert(category, atIndex: 0)
+            }
+        }
         
         // UI
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
@@ -31,23 +39,23 @@ class TodoListCategoryTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
     }
     
-    func insertNewCategory(category: String!) {
+    func insertNewCategory(category: Category!) {
         if category == "" {
             return
         }
-        objects.insertObject(category, atIndex: 0)
+        categoryItems.insert(category, atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
     // #pragma mark - Segues
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            let object = objects[indexPath!.row] as! NSDate
-//            (segue.destinationViewController as TodoListViewController).detailItem = object
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "showDetail" {
+//            let indexPath = self.tableView.indexPathForSelectedRow()
+//            let object = categoryItems[indexPath!.row] as! NSDate
+////            (segue.destinationViewController as TodoListViewController).detailItem = object
+//        }
+//    }
     
     // #pragma mark - Table View
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -55,16 +63,14 @@ class TodoListCategoryTableViewController: UITableViewController {
     }
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return categoryItems.count
     }
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        // TODO DBから取得する
-        
-        let object = objects[indexPath.row] as! NSString
-        cell.textLabel?.text = object.description
+        let category = categoryItems[indexPath.row] as Category
+        cell.textLabel?.text = category.name
         
         return cell
     }
@@ -76,7 +82,7 @@ class TodoListCategoryTableViewController: UITableViewController {
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
+            categoryItems.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -88,44 +94,60 @@ class TodoListCategoryTableViewController: UITableViewController {
             println("EDIT•ACTION")
             var inputTextField: UITextField?
             
-            let alertController: UIAlertController = UIAlertController(title: "カテゴリの編集", message: "edit category name", preferredStyle: .Alert)
+            let editAlertController: UIAlertController = UIAlertController(title: "カテゴリの編集", message: "edit category name", preferredStyle: .Alert)
             
             let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
                 println("Pushed CANCEL")
             }
-            alertController.addAction(cancelAction)
+            editAlertController.addAction(cancelAction)
             
             let editAction: UIAlertAction = UIAlertAction(title: "edit", style: .Default) { action -> Void in
-                println("add category")
+                println("edit category")
                 println(inputTextField?.text)
-                self.insertNewCategory(inputTextField!.text)
+                let category = self.categoryItems[indexPath.row] as Category!
+                category.name = inputTextField!.text
+                let manager = TodoCoreDataManager.sharedInstance
+                manager.updateTodoCategoryItem(category)
+                tableView.reloadData()
             }
-            alertController.addAction(editAction)
+            editAlertController.addAction(editAction)
             
-            alertController.addTextFieldWithConfigurationHandler { textField -> Void in
-//                inputTextField = textField
+            editAlertController.addTextFieldWithConfigurationHandler { textField -> Void in
+                inputTextField = textField
                 textField.placeholder = "category name"
-                textField.text = self.objects[indexPath.row] as! String
+                textField.text = (self.categoryItems[indexPath.row] as Category).name
             }
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.presentViewController(editAlertController, animated: true, completion: nil)
             
         });
         editRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
-            println("DELETE•ACTION");
-            self.objects.removeObjectAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)});
-        
+            
+            let deleteAlertController: UIAlertController = UIAlertController(title: "カテゴリの削除", message: "本当に削除してもOK?", preferredStyle: .Alert)
+            let deleteAction: UIAlertAction = UIAlertAction(title: "delete", style: .Default) { action -> Void in
+                println("DELETE•ACTION");
+                self.categoryItems.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let manager = TodoCoreDataManager.sharedInstance
+                let category = self.categoryItems[indexPath.row] as Category!
+                manager.deleteTodoCategoryItem(category)
+            }
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                println("Pushed CANCEL")
+            }
+            deleteAlertController.addAction(deleteAction)
+            deleteAlertController.addAction(cancelAction)
+            self.presentViewController(deleteAlertController, animated: true, completion: nil)
+        });
         return [deleteRowAction, editRowAction];
     }
     
     // #pragma mark - Table View
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
-//        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as TodoListViewController
-//        navigationController?.pushViewController(SampleViewController(), animated: true)
         
         let todoListViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TodoListViewController") as! TodoListViewController
+        todoListViewController.category = categoryItems[indexPath.row]
         navigationController?.pushViewController(todoListViewController, animated: true)
     }
     
@@ -144,8 +166,8 @@ class TodoListCategoryTableViewController: UITableViewController {
             let inputText = inputTextField!.text
             // DBに入れる
             let manager = TodoCoreDataManager.sharedInstance
-            manager.insertTodoCategoryItem(inputText)
-            self.insertNewCategory(inputText)
+            let result = manager.insertTodoCategoryItem(inputText)
+            self.insertNewCategory(result.1 as! Category)
         }
         alertController.addAction(addAction)
         
@@ -153,7 +175,6 @@ class TodoListCategoryTableViewController: UITableViewController {
             inputTextField = textField
             textField.placeholder = "category name"
         }
-
         
         presentViewController(alertController, animated: true, completion: nil)
     }

@@ -38,7 +38,7 @@ class ToDoDoTests: XCTestCase {
     
     func testInsertTodoCategoryItem() {
         let manager = TodoCoreDataManager.sharedInstance
-        XCTAssert(manager.insertTodoCategoryItem("test"), "OK")
+        XCTAssert(manager.insertTodoCategoryItem("test").0, "OK")
     }
     
     func testExample() {

@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ToDoDo/Model/CoreData/Category.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ToDoDo/Model/CoreData/Todo.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ToDoDo/Model/CoreData/Tag.swift">
+   </FileRef>
+   <FileRef
       location = "group:ToDoDo.xcodeproj">
    </FileRef>
    <FileRef
